@@ -4,7 +4,7 @@ import Persona
 import listaJugadores
 import Ronda
 
-#valida si la respuesta ingresada por el usuario es correcta y dirá cuánto ganó en la ronda o si respondió mal y perdió todo
+#Valida si la respuesta ingresada por el usuario es correcta y dirá cuánto ganó en la ronda o si respondió mal y perdió todo
 def validarRespuesta(respuesta, respuestaCorrecta, puntaje):
     if respuesta.upper() == respuestaCorrecta:
         puntaje = victorias[i+1]        
@@ -18,7 +18,7 @@ def validarRespuesta(respuesta, respuestaCorrecta, puntaje):
         puntaje=0
         return False
 
-#realiza una introducción aleatoria a la pregunta de la ronda correspondiente
+#Realiza una introducción aleatoria a la pregunta de la ronda correspondiente
 def introduccion(nivel):
     ganado = victorias[nivel]
     introduccionPregunta=[0 for i in range (5)]
@@ -30,7 +30,7 @@ def introduccion(nivel):
     introduccionRandom=int(random.random()*5)
     return introduccionPregunta[introduccionRandom]
 
-#muestra el final del juego en caso de que el jugador no quiera responder al pregunta y lo guarda en el historico de jugadores
+#Imprime el final del juego en caso de que el jugador no quiera responder la pregunta y lo guarda en el historico de jugadores
 def finDelJuego():
     print("Juego terminado")
     print("Has acumulado: $" + str(puntaje) + " dólares")
@@ -41,7 +41,7 @@ puntaje = 0
 nombre = input("Ingresa un nombre: ")
 alias = input("Ingresa un alias de 3 letras: ")
 
-#verifica la longitud del alias
+#Verifica la longitud del alias
 bandera = False
 while bandera==False:
     if len(alias)>3 or len(alias)<3:
@@ -53,7 +53,7 @@ while bandera==False:
 jugador = Persona.Jugador(nombre, alias)
 historicoJugagores = listaJugadores.listaJugadores()
 
-#ejecuta el ciclo del juego hasta que el jugador pierda, complete todas las rondas o quiera salirse del juego
+#Ejecuta el ciclo del juego hasta que el jugador pierda, complete todas las rondas o quiera salirse del juego
 for i in range(0, 5):
     
     print(introduccion(i+1))    

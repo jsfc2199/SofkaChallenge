@@ -5,7 +5,7 @@ class Ronda:
         self.respuesta=respuesta
         self.opciones=opciones
     
-    #muestra la categoría, pregunta y opciones de la ronda
+    #Muestra la categoría, pregunta y opciones de la ronda
     def estado(self):
         print("La categoría es: " + self.categoria)
         print("La pregunta es: " + self.pregunta)         
