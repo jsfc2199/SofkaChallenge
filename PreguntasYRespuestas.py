@@ -201,8 +201,6 @@ opcionesLvl4={"Arte y Cine":{
       }
 
 opcionesLvl5={"Arte y Cine":{
-    
-
                                 "A":"Francesa",
                                 "B":"Alemana",
                                 "C":"Escocesa",

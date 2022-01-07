@@ -1,3 +1,2 @@
-['rrr', 156500]
-['IOP', 500]
-['ooo', 0]
+['dsfgdsgfdg', 'hhh', 500]
+['fdghfdhfghfdgh', 'ppp', 500]
