@@ -30,6 +30,12 @@ def introduccion(nivel):
     introduccionRandom=int(random.random()*5)
     return introduccionPregunta[introduccionRandom]
 
+#muestra el final del juego en caso de que el jugador no quiera responder al pregunta y lo guarda en el historico de jugadores
+def finDelJuego():
+    print("Juego terminado")
+    print("Has acumulado: $" + str(puntaje) + " dólares")
+    historicoJugagores.guardarHistoricoJugador(jugador,puntaje)  
+
 victorias=[0,500,1000,10000,45000,100000]
 puntaje = 0
 nombre = input("Ingresa un nombre: ")
@@ -58,26 +64,27 @@ for i in range(0, 5):
     
     ronda.estado()
     
-    respuesta = input("Digite la opción correcta: ")
-
-    if validarRespuesta(respuesta, ronda.respuesta, puntaje): 
-        puntaje += victorias[i+1]
-        if i == 4:            
-            print("Felicidades, has completado todos los niveles. Has conseguido un total de $" + str(puntaje) + " dólares")
-            historicoJugagores.guardarHistoricoJugador(jugador,puntaje)  
-            break
-        else:                    
-            continuar = input("Desea continuar jugando (S/N): ")
-        if continuar.lower()=="s":
-            print("Premio acumulado: $" + str(puntaje) + " dólares")
-            print("\n")            
-            continue
+    responderPregunta = input("Desea responder la pregunta(S/N): ")
+        
+    if responderPregunta.lower()=="s":  
+        respuesta = input("Digite la opción correcta: ")
+        if validarRespuesta(respuesta, ronda.respuesta, puntaje): 
+            puntaje += victorias[i+1]
+            if i == 4:            
+                print("Felicidades, has completado todos los niveles. Has conseguido un total de $" + str(puntaje) + " dólares")
+                historicoJugagores.guardarHistoricoJugador(jugador,puntaje)  
+                break
+            else:                    
+                print("Premio acumulado: $" + str(puntaje) + " dólares")
+                print("\n")            
+                continue            
         else:
-            print("Juego terminado")
-            print("Has acumulado: $" + str(puntaje) + " dólares")
-            historicoJugagores.guardarHistoricoJugador(jugador,puntaje)               
+            puntaje = 0
+            historicoJugagores.guardarHistoricoJugador(jugador,puntaje)
             break
-    else:
-        puntaje = 0
-        historicoJugagores.guardarHistoricoJugador(jugador,puntaje)
+    else:  
+        finDelJuego()
         break
+
+
+    
